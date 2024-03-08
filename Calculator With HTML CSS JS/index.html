@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="main">
+        <div class="container">
+            <div class="solve">
+                <input type="text" placeholder="0" id="result" readonly>
+            </div>
+
+            <div class="number">
+                <div class="cut">
+                    <button onclick="clearAll()">AC</button>
+                </div>
+                <div class="firstRow">
+                    <button onclick="insert('7')">7</button>
+                    <button onclick="insert('8')">8</button>
+                    <button onclick="insert('9')">9</button>
+                    <button onclick="insert('/')">/</button>
+                </div>
+                <div class="secondRow">
+                    <button onclick="insert('4')">4</button>
+                    <button onclick="insert('5')">5</button>
+                    <button onclick="insert('6')">6</button>
+                    <button onclick="insert('*')">*</button>
+
+                </div>
+                <div class="thirdtRow">
+                    <button onclick="insert('1')">1</button>
+                    <button onclick="insert('2')">2</button>
+                    <button onclick="insert('3')">3</button>
+                    <button onclick="insert('-')">-</button>
+                </div>
+                <div class="fourthtRow">
+                    <button onclick="insert('0')">0</button>
+                    <button onclick="insert('.')">.</button>
+                    <button onclick="insert('+')">+</button>
+                    <button onclick="calculate()">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+
+</html>

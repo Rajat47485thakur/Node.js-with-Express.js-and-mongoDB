@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#main {
+    background-color: #7a7a7a;
+    width: 20vw;
+    height: 383px;
+    border-radius: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #7a7a7a;
+    width: 80%;
+    height: 90%;
+    border-radius: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.solve {
+    background-color: rgba(238, 239, 248, 0.977);
+    height: 20%;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid black;
+
+}
+
+.solve input {
+    background-color: #eeeff8f9;
+    text-align: center;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.5em;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
+
+.number {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #7a7a7a;
+    width: 100%;
+    height: 80%;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+
+
+.number button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    border-radius: 15px;
+    border: 2px solid black;
+    font-size: 1.5em;
+    font-weight: 700;
+    cursor: pointer;
+    width: 20%;
+    height: 15%;
+}
+
+.cut button {
+    height: 100%;
+    width: 23%;
+    background-color: aliceblue;
+    font-size: 90%;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.firstRow button,
+.secondRow button,
+.thirdtRow button,
+.fourthtRow button {
+    width: 23%;
+}
+
+/* @media screen and (max-width: 600px) {
+    .number {
+        flex-direction: row; 
+        flex-wrap: wrap; 
+    }
+    .number button {
+        width: 45%;
+    }
+    .firstRow button,
+    .secondRow button,
+    .thirdtRow button,
+    .fourthtRow button {
+        width: 45%; 
+    }
+} */
+.cut {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 18%;
+}
+
+.firstRow {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 18%;
+
+}
+
+.firstRow button {
+    display: flex;
+
+    margin-top: 10px;
+    width: 100%;
+    height: 100%
+}
+
+.secondRow {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 18%;
+}
+
+.secondRow button {
+    width: 100%;
+    height: 100%
+}
+
+.thirdtRow {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 18%;
+}
+
+.thirdtRow button {
+    width: 100%;
+    height: 100%
+}
+
+
+.fourthtRow {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 18%;
+}
+
+.fourthtRow button {
+    width: 100%;
+    height: 100%
+}

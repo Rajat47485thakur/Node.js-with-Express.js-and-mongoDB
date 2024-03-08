@@ -1,0 +1,97 @@
+1. Timers:  This phase processes timers that have been set using setTimeout() and setInterval().
+
+Here is an example of how the timers phase works:
+
+console.log('Start');
+ 
+setTimeout(() => {
+    console.log('Timeout callback');
+}, 2000);
+ 
+console.log('End');
+In this example, the setTimeout() function is called with a callback that will print “Timeout callback” to the console after 2000 milliseconds (2 seconds). This function is added to the message queue in the timers phase, and the event loop will process it after the synchronous code is executed. The output will be:
+
+Start
+End
+Timeout callback
+As you can see, the “Timeout callback” is printed after 2 seconds, after the “Start” and “End” are printed, because the setTimeout() function is non-blocking and its callback is processed by the event loop after the execution of the synchronous code.
+
+2. Pending Callbacks: This phase processes any callbacks that have been added to the message queue by asynchronous functions.
+
+Here is an example of how the pending callbacks phase works:
+
+console.log('Start');
+ 
+setImmediate(() => {
+    console.log('Immediate callback');
+});
+ 
+console.log('End');
+In this example, the setImmediate() function is called with a callback that will print “Immediate callback” to the console. This function is added to the message queue in the pending callbacks phase, and the event loop will process it after the timers phase. The output will be:
+
+Start
+End
+Immediate callback
+3. Idle, Prepare: The “idle.ignore” phase is not a standard phase of the event loop in Node.js. It means it’s Used internally only. The “idle” phase is a period of time during which the event loop has nothing to do and can be used to perform background tasks, such as running garbage collection or checking for low-priority events.
+
+“idle.ignore” is not an official phase of the event loop, it is a way to ignore the idle phase, meaning that it will not use the time of the idle phase to perform background tasks.
+
+An example of using idle.ignore can be:
+
+const { idle } = require('idle-gc');
+ 
+idle.ignore();
+Here we are using the idle-gc package, which allows you to ignore the idle phase. This can be useful in situations where you want to ensure that the event loop is always busy and that background tasks are not performed.
+
+It’s worth mentioning that, in general, the use of idle.ignore is not recommended, as it could cause performance issues, we should only use this if we have a very specific use case that requires it.
+
+4. Poll: This phase is used to check for new I/O events and process any that have been detected.
+
+Here is an example of how the poll phase works using a readStream:
+
+const fs = require('fs');
+const readStream = fs.createReadStream('./file.txt');
+ 
+console.log('Start');
+ 
+readStream.on('data', (chunk) => {
+    console.log(chunk.toString());
+});
+ 
+console.log('End');
+In this example, a readStream is created to read the contents of a file. The ‘data’ event is added to the message queue in the poll phase, and the event loop will process it after the pending callbacks phase. The output will be the content of the file.
+
+5. Check This phase processes any setImmediate() callbacks that have been added to the message queue.
+
+Here is an example of how the check phase works:
+
+
+console.log('Start');
+ 
+setImmediate(() => {
+    console.log('Immediate callback');
+});
+ 
+console.log('End');
+In this example, the setImmediate() function is called with a callback that will print “Immediate callback” to the console. This function is added to the message queue in the check phase, and the event loop will process it after the poll phase. The output will be:
+
+Start
+End
+Immediate callback
+6. Close Callbacks: This phase processes any callbacks that have been added to the message queue by the close event of a socket. This means that any code that needs to be executed when a socket is closed is placed in the message queue and processed during this phase.
+
+Here is an example of how the close callbacks phase works:
+
+const net = require('net');
+const server = net.createServer((socket) => {
+    socket.on('close', () => {
+        console.log('Socket closed');
+    });
+});
+ 
+server.listen(8000);
+In this example, a server is created using the net module, and the ‘close’ event is added to the message queue in the close callbacks phase with a callback that will print “Socket closed” to the console. This event will be triggered when the server’s socket is closed by the client and the callback will be processed by the event loop during the close callbacks phase.
+
+It’s important to note that the order of execution of these phases can vary depending on the specific implementation of the event loop, but generally, the event loop will process them in the order mentioned above.
+
+Each phase is executed in order, and the event loop will continue to cycle through these phases until the message queue is empty.

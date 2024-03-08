@@ -1,0 +1,24 @@
+1. Creat a api with logic and perform all the sum and calculation by parsing the the calculation in one endpoint.
+
+
+2. Learn about the Joi  create a api.
+
+
+3. DO it in the home CallBack, Promise, async/awit  use with practice.  
+
+
+{This is how you can improve your self in the good way to build the future in good direction it can make the word very good.}
+
+
+Apptunix 15/02/2024 
+mongoDb, mongoose, connectivity with node
+
+Perform CRUD and insert a username and password using mongoDb CRUD in postman and save that in mongoDb
+
+//To use the unique in |unique: true| need to add this Object before creating the database and then the repeated data will not save in the database and to use it once the database has saved the data in past in that Database we have to use the "quary for collamn"
+
+
+//signup, login, getprofile, update profile, delete profile ----Date21/02/2024.
+
+
+first check that does the user is there in the database login by username and password and then  and check the password is also correct or not by bcrypted password useng a function (There is function for that).
