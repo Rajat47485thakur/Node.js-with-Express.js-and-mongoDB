@@ -23,6 +23,7 @@ router.get('/letLookupAddress', controller.letLookupAddress);
 
 // ============================$elemMatch ROUTES=========================== 
 router.get('/getMarks', controller.getMarks);
+router.get('/getMarks2', controller.getMarks2);
 
 // ============================ADDRESS ROUTES=========================== 
 

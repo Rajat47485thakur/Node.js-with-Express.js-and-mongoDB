@@ -21,7 +21,7 @@ module.exports.addPerson = async (req, res) => {
     } catch (err) {
         return res.status(500).json(`Facing error while adding the ${name}, ${err}`)
     }
-}
+};
 
 // EDIT PEOPLE 
 module.exports.editPerson = async (req, res) => {
@@ -50,7 +50,7 @@ module.exports.getAllPeople = async (req, res) => {
     } catch (err) {
         return res.Error("Unable to find the Persons", err)
     }
-}
+};
 
 
 
@@ -113,7 +113,7 @@ module.exports.aggregatePerson = async (req, res) => {
     } catch (err) {
         return res.status(500).json({ messaeg: "Internal Server Error!", detail: err });
     }
-}
+};
 
 
 // ============================POPULATE ADDRESS ===========================
@@ -127,7 +127,7 @@ module.exports.populateAddress = async (req, res) => {
         console.log(err)
         return res.status(500).json({ message: "Internal Server Error", err })
     }
-}
+};
 
 //============================LOOKUP ADDRESS ===========================
 
@@ -148,7 +148,7 @@ module.exports.lookupAddress = async (req, res) => {
     } catch (err) {
         return res.status(500).json({ message: "Internal Error", err })
     }
-}
+};
 //============================LOOKUP LET PIPELINE ADDRESS ===========================
 
 module.exports.letLookupAddress = async (req, res) => {
@@ -193,7 +193,7 @@ module.exports.letLookupAddress = async (req, res) => {
     } catch (err) {
         return res.status(500).json({ message: "Internal server Error", err });
     }
-}
+};
 
 
 // ============================$elemMatch CONTROLLER=========================== 
@@ -209,8 +209,22 @@ module.exports.getMarks = async (req, res) => {
     } catch (err) {
         return res.status(500).json({ messaeg: "Internal Server Error", err });
     }
-}
+};
 
+
+module.exports.getMarks2 = async (req, res) => {
+    try {
+        const myMarks2 = await Person.find({ marks: { $elemMatch: { subject: "Math", marks: { $gt: 80 } } } },
+            { "marks.$": 1 }
+        );
+        if (!myMarks2 || myMarks2.length === 0) {
+            return res.status(400).json({ message: "No Marks Found Greater then Your marks check for less marks" });
+        }
+        return res.status(200).json({ messaeg: "This is your data", data: myMarks2 });
+    } catch (err) {
+        return res.status(500).json({ message: "Internal Server error" }, err)
+    }
+};
 
 
 // ============================ADDRESS CONTROLLER=========================== 
@@ -235,7 +249,7 @@ module.exports.addAddress = async (req, res) => {
         console.log(err);
         return res.status(500).json({ messaeg: " Internal Error", err })
     }
-}
+};
 
 
 
@@ -247,11 +261,7 @@ module.exports.getAddress = async (req, res) => {
     } catch (err) {
         return res.status(500).json({ message: "Internal Error", err })
     }
-}
-
-
-
-
+};
 
 
 
